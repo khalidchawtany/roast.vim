@@ -46,7 +46,7 @@ def show_response(response: requests.Response):
     for window in vim.windows:
         if '_roast_renderer' in window.buffer.vars:
             workspace_window = window
-            workspace_renderer = window.buffer.vars['_roast_renderer'].decode()
+            workspace_renderer = window.buffer.vars['_roast_renderer']
             break
 
     # Switch to workspace window.
@@ -108,7 +108,7 @@ def apply_actions(buf, actions):
 
 
 def next_render(delta=1):
-    renderer = vim.current.buffer.vars['_roast_renderer'].decode()
+    renderer = vim.current.buffer.vars['_roast_renderer']
     vim.command('buffer __roast_' + renderers[(renderers.index(renderer) + delta) % len(renderers)] + '__')
 
 
